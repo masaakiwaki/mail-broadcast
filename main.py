@@ -1,9 +1,46 @@
 import mail_formatter
 import import_config
+import time
 
 import PySimpleGUI as sg
 
-MAIL_BODY_TEMPLATE, MAIL_SUBJECT_TEMPLATE, MAILING_LIST_TEMPLATE = import_config.import_template()
+
+def gui_select_config():
+
+    SELECT_CONFIG_LIST, template_title_list = import_config.create_template_list()
+    select_config = ''
+
+
+    layout = [[sg.Text('Tmplate Select')],
+            [sg.Listbox(template_title_list, size=(50, len(template_title_list)), key='-template_name-')],
+            [sg.Button('決定'), sg.Button('終了')]]
+
+    window = sg.Window('テンプレート選択', layout)
+
+    while True:
+        event, values = window.read()
+        if event == sg.WIN_CLOSED or event == '終了':
+            break
+        if event == '決定':
+            select_config = values['-template_name-']
+            break
+
+    window.close()
+
+    return SELECT_CONFIG_LIST, select_config
+
+
+
+
+
+
+
+
+
+
+SELECT_CONFIG_LIST, select_config = gui_select_config()
+
+MAIL_BODY_TEMPLATE, MAIL_SUBJECT_TEMPLATE, MAILING_LIST_TEMPLATE = import_config.import_template(SELECT_CONFIG_LIST, select_config)
 
 def make(mail_info):
     mail_body_header = ''
@@ -83,7 +120,7 @@ layout = [[sg.Text('案件名'), sg.Input(key='-case_name-')],
           [sg.Multiline(default_text = MAIL_BODY_TEMPLATE, key='-MAIL_BODY_TEMPLATE-', size=(100, 20))],
           [sg.Button('決定'), sg.Button('終了')]]
 
-window = sg.Window('sample', layout)
+window = sg.Window('メール作成', layout)
 
 
 
@@ -101,5 +138,6 @@ while True:
         mail_to_add_list, mail_cc_add_list,  mail_bcc_add_list = add_list(values)
         for mail_info in MAILING_LIST_TEMPLATE:
             make(mail_info)
+            time.sleep(3)
 
 window.close()
