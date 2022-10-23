@@ -4,13 +4,12 @@ import win32com.client
 def add_address(address_list, add_list):
     return list(set(address_list + add_list))
 
+
 def deduplication_address(address_list_1, address_list_2):
     delete_list = list(set(address_list_1) & set(address_list_2))
     for i in delete_list:
         address_list_2.remove(i)
     return address_list_2
-
-
 
 
 def create_address(address_list):
