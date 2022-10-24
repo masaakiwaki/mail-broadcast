@@ -25,6 +25,7 @@ def create_address(address_list):
         return address_name
       
 
+
 def create_text(text_tamplate, case_name, customre_name, mail_body_header):
     i = text_tamplate
     i = i.replace('【case_name】', case_name)
