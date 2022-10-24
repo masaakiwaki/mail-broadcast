@@ -107,13 +107,13 @@ def add_list(imput_values):
 
 
 
-layout = [[sg.Text('案件名'), sg.Input(key='-case_name-')],
-          [sg.Text('お客さま'), sg.Input(key='-customre_name-')],
+layout = [[sg.Text('案件名', size=(8, 1)), sg.Input(key='-case_name-')],
+          [sg.Text('お客さま', size=(8, 1)), sg.Input(key='-customre_name-')],
           [sg.Text('追加アドレス')],
           [],
-          [sg.Text('TO'), sg.Input(key='-to1-'), sg.Input(key='-to2-'), sg.Input(key='-to3-')],
-          [sg.Text('CC'), sg.Input(key='-cc1-'), sg.Input(key='-cc2-'), sg.Input(key='-cc3-')],
-          [sg.Text('BCC'), sg.Input(key='-bcc1-'), sg.Input(key='-bcc2-'), sg.Input(key='-bcc3-')],
+          [sg.Text('TO', size=(8, 1)), sg.Input(key='-to1-'), sg.Input(key='-to2-'), sg.Input(key='-to3-')],
+          [sg.Text('CC', size=(8, 1)), sg.Input(key='-cc1-'), sg.Input(key='-cc2-'), sg.Input(key='-cc3-')],
+          [sg.Text('BCC', size=(8, 1)), sg.Input(key='-bcc1-'), sg.Input(key='-bcc2-'), sg.Input(key='-bcc3-')],
           [sg.Text('タイトル')],
           [sg.Input(default_text = MAIL_SUBJECT_TEMPLATE, key='-MAIL_SUBJECT_TEMPLATE-')],
           [sg.Text('本文')],
